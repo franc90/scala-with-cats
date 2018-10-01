@@ -16,4 +16,17 @@ class TypeClassTest extends FlatSpec with Matchers {
     )))
   }
 
+  it should "be converted with interface syntax" in {
+    val john = Person("john", "mail@buziaczek.pl")
+
+    import JsonWriterInstances._
+    import JsonSyntax._
+    val jsonJohn = john.toJson
+
+    jsonJohn should be(JsObject(Map(
+      "name" -> JsString("john"),
+      "email" -> JsString("mail@buziaczek.pl")
+    )))
+  }
+
 }
