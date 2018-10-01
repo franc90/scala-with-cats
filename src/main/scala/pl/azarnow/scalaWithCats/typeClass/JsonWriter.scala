@@ -15,4 +15,11 @@ object JsonWriterInstances {
       "name" -> JsString(value.name),
       "email" -> JsString(value.email)
     ))
+
+  implicit def optionWriter[T](implicit writer: JsonWriter[T]): JsonWriter[Option[T]] =
+    (option: Option[T]) => option match {
+      case Some(value) => writer.write(value)
+      case None => JsNull
+    }
+
 }
