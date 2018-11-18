@@ -3,7 +3,7 @@ package pl.azarnow.scalaWithCats.functor
 import org.scalatest.{FlatSpec, Matchers}
 import pl.azarnow.scalaWithCats.functor.printable.{Box, Printable}
 
-class PrintableTest extends FlatSpec with Matchers {
+class ContravariantFunctorTest extends FlatSpec with Matchers {
 
   "Printable " should " format both string and boolean" in {
     import Printable._
